@@ -6,10 +6,18 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       redirect_to user_path(@user.id)
+      session[:user_id] = @user.id
     else
       render :new
     end
   end
+  def edit
+    @user = User.find(params[:id])
+    if @user != current_user
+        redirect_to user_path(current_user), alert: "不正なアクセスです。"
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
