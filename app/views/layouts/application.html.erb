@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>FaceClone</title>
+    <title>Facebooook</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,9 +10,22 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+    <%= render '/layouts/nav' %>
+    <% if flash[:notice]%>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= flash[:notice] %>
+        </div>
+      </div>
+    <% elsif flash[:danger] %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= flash[:danger] %>
+        </div>
+      </div>
     <% end %>
-    <%= yield %>
+    <div class='container'>
+      <%= yield %>
+    </div>
   </body>
 </html>
