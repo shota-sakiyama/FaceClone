@@ -9,7 +9,7 @@
       </ul>
     </div>
   <% end %>
-    <%= f.text_field :title, class: 'form-control',:placeholder => "タイトル" %>  
+    <%= f.text_field :title, class: 'form-control',:placeholder => "タイトル" %>
     <%= f.text_field :content, class: 'form-control input-lg',:placeholder => "メッセージをシェアしよう"%>
     <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
     <%= f.file_field(:image,{:class => 'btn-primary'})  %>

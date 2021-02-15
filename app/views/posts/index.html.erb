@@ -6,22 +6,25 @@
         <img src="/avatar.png" height="40px" widht="40px">
       </div>
       <div class= "col-sm-1">
-        <%= post.user.name %>
+        <div class="post-prof">
+          <%= link_to post.user.name, post_path(post.id) %></td>
+        </div>
       </div>
       <div class= "col-sm-10">
         <p class="post-content"><%= post.title %></p>
         <p class="post-content"><%= post.content %></p>
         <%= image_tag(post.image.url) if post.image && post.image.url %>
         <% if post.user.id == current_user.id %>
-          <div class="post-links">                    
-            <%= link_to edit_post_path(post.id) do %>
-                <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>                
+          <div class="post-links">
+
+            <%= link_to edit_post_path(post.id) ,data: {confirm: "本当に編集していいですか？"} do %>
+                <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>
             <% end %>
             <%= link_to post_path(post.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } do %>
-                <span class="glyphicon glyphicon-trash g-links" aria-hidden="true"></span> 
-            <% end %>        
+                <span class="glyphicon glyphicon-trash g-links" aria-hidden="true"></span>
+            <% end %>
           </div>
-        <% end %>                           
+        <% end %>
       </div>
     </div>
   </div>

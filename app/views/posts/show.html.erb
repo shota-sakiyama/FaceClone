@@ -1,2 +1,5 @@
 <p>タイトル: <%= @post.title %></p>
 <p>内容: <%= @post.content %></p>
+ <%= image_tag @post.image.url %>
+
+ <%= link_to '戻る', posts_path, class:"btn btn-warning" %>
